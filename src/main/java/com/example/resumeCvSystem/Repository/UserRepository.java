@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserRepository {
@@ -48,5 +49,11 @@ public class UserRepository {
         if(userDescriptionBytes.length > GlobalVariables.MAXIMUM_DESC_BYTES) {
             throw new NewUserInfoInvalidException(ExceptionMessage.USER_DESCRIPTION_INVALID_EXCEPTION_MESSAGE);
         }
+    }
+
+    public User getUserById(Long id) {
+        Optional<User> userById = userList.stream().filter(user -> id == user.getUserId())
+                .findFirst();
+        return userById.isPresent() ? userById.get() : null;
     }
 }
