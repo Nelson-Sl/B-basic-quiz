@@ -1,5 +1,6 @@
 package com.example.resumeCvSystem.Common;
 
+import com.example.resumeCvSystem.Exception.NewUserEducationInfoInvalidException;
 import com.example.resumeCvSystem.Exception.NewUserInfoInvalidException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +23,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
     }
 
-    @ExceptionHandler(NewUserInfoInvalidException.class)
-    public ResponseEntity<ErrorMessage> userInfoExceptionHandler(NewUserInfoInvalidException ex) {
+    @ExceptionHandler({NewUserInfoInvalidException.class, NewUserEducationInfoInvalidException.class})
+    public ResponseEntity<ErrorMessage> userInfoExceptionHandler(Exception ex) {
         String message = ex.getMessage();
         ErrorMessage errorMessage = ErrorMessage.builder()
                 .timeStamp(GlobalVariables.dateFormat.format(new Date()))

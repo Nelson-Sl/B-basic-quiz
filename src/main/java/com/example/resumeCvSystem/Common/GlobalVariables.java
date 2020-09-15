@@ -11,4 +11,8 @@ public class GlobalVariables {
     public static final long MAXIMUM_AVATAR_BYTES = 512;
     public static final long MAXIMUM_DESC_BYTES = 1024;
 
+    public static final long MINIMUM_EDUCATION_TITLE_BYTES = 1;
+    public static final long MAXIMUM_EDUCATION_TITLE_BYTES = 256;
+    public static final long MINIMUM_EDUCATION_DESC_BYTES = 1;
+    public static final long MAXIMUM_EDUCATION_DESC_BYTES = 4096;
 }

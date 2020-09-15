@@ -9,4 +9,9 @@ public class ExceptionMessage {
             "Avatar link is not valid. The link should between 8 and 512 bytes";
     public static final String USER_DESCRIPTION_INVALID_EXCEPTION_MESSAGE =
             "Description is not valid. It can't exceed 1024 bytes";
+
+    public static final String USER_EDUCATION_TITLE_INVALID_EXCEPTION_MESSAGE =
+            "User education title is not valid. It can't be empty or longer than 256 bytes";
+    public static final String USER_EDUCATION_DESC_INVALID_EXCEPTION_MESSAGE =
+            "User education description is not valid. It can't be empty or longer than 4096 bytes";
 }
