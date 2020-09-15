@@ -5,6 +5,8 @@ import com.example.resumeCvSystem.Service.UserService;
 import com.example.resumeCvSystem.domain.Education;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/users")
 public class EducationController {
@@ -15,7 +17,12 @@ public class EducationController {
     }
 
     @PostMapping("/{id}/educations")
-    public Education addEducationRecordById(@PathVariable long id, @RequestBody Education education) {
-        return this.educationService.addEducationRecordById(id,education);
+    public Education addEducationRecordByUserId(@PathVariable long id, @RequestBody Education education) {
+        return this.educationService.addEducationRecordByUserId(id,education);
+    }
+
+    @GetMapping("/{id}/educations")
+    public List<Education> findEducationRecordByUserId(@PathVariable long id) {
+        return this.educationService.findEducationRecordByUserId(id);
     }
 }

@@ -8,23 +8,24 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class EducationRepository {
-    private List<Education> educations = new ArrayList<>();
+    private List<Education> educationList = new ArrayList<>();
     private final UserRepository userRepository;
 
     public EducationRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public Education addEducationRecordById(long id, Education education) {
+    public Education addEducationRecordByUserId(long id, Education education) {
         boolean isUserExisted = userRepository.getUserList().stream().anyMatch(user -> user.getUserId() == id);
         if(isUserExisted) {
             Education newEducation = Education.builder().userId(id).year(education.getYear())
                     .title(education.getTitle()).description(education.getDescription()).build();
             checkEducationInfoLength(newEducation);
-            educations.add(newEducation);
+            educationList.add(newEducation);
             return newEducation;
         }
         return null;
@@ -49,5 +50,14 @@ public class EducationRepository {
                 educationDescBytes.length > GlobalVariables.MAXIMUM_EDUCATION_DESC_BYTES) {
             throw new NewUserEducationInfoInvalidException(ExceptionMessage.USER_EDUCATION_DESC_INVALID_EXCEPTION_MESSAGE);
         }
+    }
+
+    public List<Education> findEducationRecordByUserId(long id) {
+        boolean isUserExisted = userRepository.getUserList().stream().anyMatch(user -> user.getUserId() == id);
+        if(isUserExisted) {
+            return educationList.stream().filter(education -> education.getUserId() == id)
+                    .collect(Collectors.toList());
+        }
+        return null;
     }
 }
