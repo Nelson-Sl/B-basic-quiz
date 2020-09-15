@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin
 public class EducationController {
     private final EducationService educationService;
 

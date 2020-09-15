@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin
 public class UserController {
     private final UserService userService;
 
