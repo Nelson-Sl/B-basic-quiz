@@ -1,9 +1,12 @@
 package com.example.resumeCvSystem.domain;
 
+import com.example.resumeCvSystem.Common.ExceptionMessage;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.Min;
 
 @Data
 @Builder
@@ -12,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class User {
     private Long userId;
     private String name;
+    @Min(value=17, message = ExceptionMessage.USER_AGE_TOO_SHORT_EXCEPTION_MESSAGE)
     private Long age;
     private String avatar;
     private String description;
