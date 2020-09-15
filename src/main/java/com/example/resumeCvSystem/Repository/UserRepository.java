@@ -56,4 +56,8 @@ public class UserRepository {
                 .findFirst();
         return userById.isPresent() ? userById.get() : null;
     }
+
+    public List<User> getUserList() {
+        return this.userList;
+    }
 }

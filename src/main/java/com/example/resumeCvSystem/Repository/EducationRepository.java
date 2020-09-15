@@ -12,13 +12,22 @@ import java.util.List;
 @Repository
 public class EducationRepository {
     private List<Education> educations = new ArrayList<>();
+    private final UserRepository userRepository;
+
+    public EducationRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public Education addEducationRecordById(long id, Education education) {
-        Education newEducation = Education.builder().userId(id).year(education.getYear())
-                .title(education.getTitle()).description(education.getDescription()).build();
-        checkEducationInfoLength(newEducation);
-        educations.add(newEducation);
-        return newEducation;
+        boolean isUserExisted = userRepository.getUserList().stream().anyMatch(user -> user.getUserId() == id);
+        if(isUserExisted) {
+            Education newEducation = Education.builder().userId(id).year(education.getYear())
+                    .title(education.getTitle()).description(education.getDescription()).build();
+            checkEducationInfoLength(newEducation);
+            educations.add(newEducation);
+            return newEducation;
+        }
+        return null;
     }
 
     private void checkEducationInfoLength(Education newEducation) {
