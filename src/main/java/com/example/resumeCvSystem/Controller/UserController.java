@@ -25,6 +25,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User getUserById(@PathVariable long id) {
+        // GTB: - 没有处理 user 为 null 的场景？
         return this.userService.getUserById(id);
     }
 }

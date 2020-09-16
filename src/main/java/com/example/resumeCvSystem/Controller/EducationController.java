@@ -1,5 +1,5 @@
 package com.example.resumeCvSystem.Controller;
-
+// GTB: - ↑ package name 里一般不会使用大写字母
 import com.example.resumeCvSystem.Service.EducationService;
 import com.example.resumeCvSystem.Service.UserService;
 import com.example.resumeCvSystem.domain.Education;
@@ -26,6 +26,7 @@ public class EducationController {
 
     @GetMapping("/{id}/educations")
     public List<Education> findEducationRecordByUserId(@PathVariable long id) {
+        // GTB: - 没有处理 user 为 null 的场景？
         return this.educationService.findEducationRecordByUserId(id);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.resumeCvSystem.Common;
 
 import java.text.SimpleDateFormat;
-
+// GTB: + 集中管理 constants
 public class GlobalVariables {
     public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sssX':00'");
 

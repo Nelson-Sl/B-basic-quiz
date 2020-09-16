@@ -16,6 +16,7 @@ public class UserRepository {
 
     public synchronized User addUser(User user) {
         checkUserInfoLength(user);
+        // GTB: 建议 id 使用专用的字段来生成
         long userId = (long) userList.size() + 1;
         user.setUserId(userId);
         userList.add(user);
@@ -28,6 +29,7 @@ public class UserRepository {
         checkUserDescriptionLength(user);
     }
 
+    // GTB: 可以通过自定义的 annotation 来实现，了解一下
     private void checkUserNameLength(User user) {
         byte[] userNameBytes = user.getName().getBytes();
         if(userNameBytes.length < GlobalVariables.MINIMUM_NAME_BYTES ||
@@ -51,6 +53,7 @@ public class UserRepository {
         }
     }
 
+    // GTB: - 用 Optional 的话，可以让 getUserById 直接返回 Optional，或者直接抛出异常；
     public User getUserById(Long id) {
         Optional<User> userById = userList.stream().filter(user -> id == user.getUserId())
                 .findFirst();
