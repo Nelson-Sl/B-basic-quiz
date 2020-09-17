@@ -14,4 +14,7 @@ public class ExceptionMessage {
             "User education title is not valid. It can't be empty or longer than 256 bytes";
     public static final String USER_EDUCATION_DESC_INVALID_EXCEPTION_MESSAGE =
             "User education description is not valid. It can't be empty or longer than 4096 bytes";
+
+    public static final String USER_INVALID_ID_EXCEPTION_MESSAGE =
+            "User ID can't be null and should be consists of numbers";
 }

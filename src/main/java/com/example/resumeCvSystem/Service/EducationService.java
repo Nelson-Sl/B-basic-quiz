@@ -14,11 +14,11 @@ public class EducationService {
         this.educationRepository = educationRepository;
     }
 
-    public Education addEducationRecordByUserId(long id, Education education) {
+    public Education addEducationRecordByUserId(Long id, Education education) {
         return this.educationRepository.addEducationRecordByUserId(id, education);
     }
 
-    public List<Education> findEducationRecordByUserId(long id) {
+    public List<Education> findEducationRecordByUserId(Long id) {
         return this.educationRepository.findEducationRecordByUserId(id);
     }
 }

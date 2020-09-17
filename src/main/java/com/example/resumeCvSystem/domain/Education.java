@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Education {
-    private long userId;
-    private long year;
+    private Long userId;
+    private Long year;
     private String title;
     private String description;
 }

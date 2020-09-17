@@ -13,10 +13,10 @@ import javax.validation.constraints.Min;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    private long userId;
+    private Long userId;
     private String name;
     @Min(value=17, message = ExceptionMessage.USER_AGE_TOO_SHORT_EXCEPTION_MESSAGE)
-    private long age;
+    private Long age;
     private String avatar;
     private String description;
 }

@@ -37,7 +37,7 @@ public class EducationRepository {
     }
 
     private void checkEducationTitleLength(Education newEducation) {
-        byte[] educationTitleBytes = newEducation.getTitle().getBytes();
+        byte[] educationTitleBytes = newEducation.getTitle().getBytes(); // 1 char = 2 byte
         if(educationTitleBytes.length < GlobalVariables.MINIMUM_EDUCATION_TITLE_BYTES ||
                 educationTitleBytes.length > GlobalVariables.MAXIMUM_EDUCATION_TITLE_BYTES) {
             throw new NewUserEducationInfoInvalidException(ExceptionMessage.USER_EDUCATION_TITLE_INVALID_EXCEPTION_MESSAGE);
@@ -52,7 +52,7 @@ public class EducationRepository {
         }
     }
 
-    public List<Education> findEducationRecordByUserId(long id) {
+    public List<Education> findEducationRecordByUserId(Long id) {
         boolean isUserExisted = userRepository.getUserList().stream().anyMatch(user -> user.getUserId() == id);
         if(isUserExisted) {
             return educationList.stream().filter(education -> education.getUserId() == id)
