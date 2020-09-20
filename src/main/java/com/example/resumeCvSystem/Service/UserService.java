@@ -1,8 +1,14 @@
 package com.example.resumeCvSystem.Service;
 
+import com.example.resumeCvSystem.Common.ExceptionMessage;
+import com.example.resumeCvSystem.Common.resumeUtils;
+import com.example.resumeCvSystem.Entity.UserEntity;
 import com.example.resumeCvSystem.Repository.UserRepository;
 import com.example.resumeCvSystem.domain.User;
 import org.springframework.stereotype.Service;
+import com.example.resumeCvSystem.Exception.userNotFoundException;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -12,11 +18,16 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User addUser(User user) {
-        return this.userRepository.addUser(user);
+    public UserEntity addUser(User user) {
+        UserEntity userInDb = resumeUtils.userEntityBuilder(user);
+        return this.userRepository.save(userInDb);
     }
 
-    public User getUserById(Long id) {
-        return this.userRepository.getUserById(id);
+    public UserEntity findUserById(Long id) {
+        Optional<UserEntity> userFound = this.userRepository.findById(id);
+        if(userFound.isPresent()) {
+            return userFound.get();
+        }
+        throw new userNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE);
     }
 }

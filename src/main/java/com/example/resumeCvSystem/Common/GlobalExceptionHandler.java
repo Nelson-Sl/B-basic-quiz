@@ -2,6 +2,8 @@ package com.example.resumeCvSystem.Common;
 
 import com.example.resumeCvSystem.Exception.NewUserEducationInfoInvalidException;
 import com.example.resumeCvSystem.Exception.NewUserInfoInvalidException;
+import com.example.resumeCvSystem.Exception.educationNotFoundException;
+import com.example.resumeCvSystem.Exception.userNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import javax.validation.ConstraintViolationException;
 import java.util.Date;
 
 @ControllerAdvice
@@ -32,6 +33,17 @@ public class GlobalExceptionHandler {
                 .timeStamp(GlobalVariables.dateFormat.format(new Date()))
                 .status(HttpStatus.BAD_REQUEST.value())
                 .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
+                .message(message).build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+    }
+
+    @ExceptionHandler({userNotFoundException.class, educationNotFoundException.class})
+    public ResponseEntity<ErrorMessage> userInfoNotFoundExceptionHandler(Exception ex) {
+        String message = ex.getMessage();
+        ErrorMessage errorMessage = ErrorMessage.builder()
+                .timeStamp(GlobalVariables.dateFormat.format(new Date()))
+                .status(HttpStatus.NOT_FOUND.value())
+                .error(HttpStatus.NOT_FOUND.getReasonPhrase())
                 .message(message).build();
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
     }

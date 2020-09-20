@@ -1,14 +1,13 @@
 package com.example.resumeCvSystem.Controller;
 
 import com.example.resumeCvSystem.Common.ExceptionMessage;
+// GTB: - ↑ package name 里一般不会使用大写字母
+import com.example.resumeCvSystem.Entity.EducationEntity;
 import com.example.resumeCvSystem.Service.EducationService;
 import com.example.resumeCvSystem.domain.Education;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @RestController
@@ -23,13 +22,14 @@ public class EducationController {
 
     @PostMapping("/{id}/educations")
     @ResponseStatus(HttpStatus.CREATED)
-    public Education addEducationRecordByUserId(@PathVariable Long id,
+    public EducationEntity addEducationRecordByUserId(@PathVariable Long id,
                                                 @RequestBody Education education) {
         return this.educationService.addEducationRecordByUserId(id,education);
     }
 
     @GetMapping("/{id}/educations")
-    public List<Education> findEducationRecordByUserId(@PathVariable Long id) {
+    public List<EducationEntity> findEducationRecordByUserId(@PathVariable long id) {
+        // GTB: - 没有处理 user 为 null 的场景？
         return this.educationService.findEducationRecordByUserId(id);
     }
 }

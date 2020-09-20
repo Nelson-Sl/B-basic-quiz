@@ -1,5 +1,6 @@
 package com.example.resumeCvSystem.Controller;
 
+import com.example.resumeCvSystem.Entity.UserEntity;
 import com.example.resumeCvSystem.Service.UserService;
 import com.example.resumeCvSystem.domain.User;
 import org.springframework.http.HttpStatus;
@@ -19,12 +20,13 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public User addUser(@RequestBody @Valid User user) {
+    public UserEntity addUser(@RequestBody @Valid User user) {
         return this.userService.addUser(user);
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return this.userService.getUserById(id);
+    public UserEntity getUserById(@PathVariable long id) {
+        // GTB: - 没有处理 user 为 null 的场景？Solved
+        return this.userService.findUserById(id);
     }
 }
