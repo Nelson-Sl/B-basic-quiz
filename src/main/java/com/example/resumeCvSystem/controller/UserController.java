@@ -1,7 +1,7 @@
-package com.example.resumeCvSystem.Controller;
+package com.example.resumeCvSystem.controller;
 
-import com.example.resumeCvSystem.Entity.UserEntity;
-import com.example.resumeCvSystem.Service.UserService;
+import com.example.resumeCvSystem.entity.UserEntity;
+import com.example.resumeCvSystem.service.UserService;
 import com.example.resumeCvSystem.domain.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

@@ -1,9 +1,8 @@
-package com.example.resumeCvSystem.Controller;
+package com.example.resumeCvSystem.controller;
 
-import com.example.resumeCvSystem.Common.ExceptionMessage;
 // GTB: - ↑ package name 里一般不会使用大写字母
-import com.example.resumeCvSystem.Entity.EducationEntity;
-import com.example.resumeCvSystem.Service.EducationService;
+import com.example.resumeCvSystem.entity.EducationEntity;
+import com.example.resumeCvSystem.service.EducationService;
 import com.example.resumeCvSystem.domain.Education;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

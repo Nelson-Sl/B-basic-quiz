@@ -1,4 +1,4 @@
-package com.example.resumeCvSystem.Common;
+package com.example.resumeCvSystem.common;
 
 import java.text.SimpleDateFormat;
 // GTB: + 集中管理 constants

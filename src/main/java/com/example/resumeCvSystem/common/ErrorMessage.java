@@ -1,4 +1,4 @@
-package com.example.resumeCvSystem.Common;
+package com.example.resumeCvSystem.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

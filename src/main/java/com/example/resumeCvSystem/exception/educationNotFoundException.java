@@ -1,4 +1,4 @@
-package com.example.resumeCvSystem.Exception;
+package com.example.resumeCvSystem.exception;
 
 public class educationNotFoundException extends RuntimeException{
     public educationNotFoundException(String message) {

@@ -1,9 +1,9 @@
-package com.example.resumeCvSystem.Common;
+package com.example.resumeCvSystem.common;
 
-import com.example.resumeCvSystem.Exception.NewUserEducationInfoInvalidException;
-import com.example.resumeCvSystem.Exception.NewUserInfoInvalidException;
-import com.example.resumeCvSystem.Exception.educationNotFoundException;
-import com.example.resumeCvSystem.Exception.userNotFoundException;
+import com.example.resumeCvSystem.exception.NewUserEducationInfoInvalidException;
+import com.example.resumeCvSystem.exception.NewUserInfoInvalidException;
+import com.example.resumeCvSystem.exception.educationNotFoundException;
+import com.example.resumeCvSystem.exception.userNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

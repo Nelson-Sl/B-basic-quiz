@@ -1,4 +1,4 @@
-package com.example.resumeCvSystem.Exception;
+package com.example.resumeCvSystem.exception;
 
 public class NewUserInfoInvalidException extends RuntimeException {
     public NewUserInfoInvalidException(String message) {

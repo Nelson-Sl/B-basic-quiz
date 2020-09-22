@@ -1,6 +1,6 @@
 package com.example.resumeCvSystem.domain;
 
-import com.example.resumeCvSystem.Common.ExceptionMessage;
+import com.example.resumeCvSystem.common.ExceptionMessage;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

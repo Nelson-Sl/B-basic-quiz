@@ -1,6 +1,5 @@
-package com.example.resumeCvSystem.Entity;
+package com.example.resumeCvSystem.entity;
 
-import com.example.resumeCvSystem.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

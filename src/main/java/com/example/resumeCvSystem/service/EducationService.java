@@ -1,13 +1,13 @@
-package com.example.resumeCvSystem.Service;
+package com.example.resumeCvSystem.service;
 
-import com.example.resumeCvSystem.Common.ExceptionMessage;
-import com.example.resumeCvSystem.Common.resumeUtils;
-import com.example.resumeCvSystem.Entity.EducationEntity;
-import com.example.resumeCvSystem.Entity.UserEntity;
-import com.example.resumeCvSystem.Exception.userNotFoundException;
-import com.example.resumeCvSystem.Exception.educationNotFoundException;
-import com.example.resumeCvSystem.Repository.EducationRepository;
-import com.example.resumeCvSystem.Repository.UserRepository;
+import com.example.resumeCvSystem.common.ExceptionMessage;
+import com.example.resumeCvSystem.common.resumeUtils;
+import com.example.resumeCvSystem.entity.EducationEntity;
+import com.example.resumeCvSystem.entity.UserEntity;
+import com.example.resumeCvSystem.exception.userNotFoundException;
+import com.example.resumeCvSystem.exception.educationNotFoundException;
+import com.example.resumeCvSystem.repository.EducationRepository;
+import com.example.resumeCvSystem.repository.UserRepository;
 import com.example.resumeCvSystem.domain.Education;
 import org.springframework.stereotype.Service;
 

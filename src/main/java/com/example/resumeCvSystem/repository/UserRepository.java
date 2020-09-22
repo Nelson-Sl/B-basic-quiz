@@ -1,6 +1,6 @@
-package com.example.resumeCvSystem.Repository;
+package com.example.resumeCvSystem.repository;
 
-import com.example.resumeCvSystem.Entity.UserEntity;
+import com.example.resumeCvSystem.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

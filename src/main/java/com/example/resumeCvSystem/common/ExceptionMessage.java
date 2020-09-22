@@ -1,4 +1,4 @@
-package com.example.resumeCvSystem.Common;
+package com.example.resumeCvSystem.common;
 
 public class ExceptionMessage {
     public static final String USER_AGE_TOO_SHORT_EXCEPTION_MESSAGE =

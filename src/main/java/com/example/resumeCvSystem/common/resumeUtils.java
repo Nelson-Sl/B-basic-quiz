@@ -1,7 +1,7 @@
-package com.example.resumeCvSystem.Common;
+package com.example.resumeCvSystem.common;
 
-import com.example.resumeCvSystem.Entity.EducationEntity;
-import com.example.resumeCvSystem.Entity.UserEntity;
+import com.example.resumeCvSystem.entity.EducationEntity;
+import com.example.resumeCvSystem.entity.UserEntity;
 import com.example.resumeCvSystem.domain.Education;
 import com.example.resumeCvSystem.domain.User;
 
