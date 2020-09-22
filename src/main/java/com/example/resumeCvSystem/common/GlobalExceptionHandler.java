@@ -2,8 +2,8 @@ package com.example.resumeCvSystem.common;
 
 import com.example.resumeCvSystem.exception.NewUserEducationInfoInvalidException;
 import com.example.resumeCvSystem.exception.NewUserInfoInvalidException;
-import com.example.resumeCvSystem.exception.educationNotFoundException;
-import com.example.resumeCvSystem.exception.userNotFoundException;
+import com.example.resumeCvSystem.exception.EducationNotFoundException;
+import com.example.resumeCvSystem.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
     }
 
-    @ExceptionHandler({userNotFoundException.class, educationNotFoundException.class})
+    @ExceptionHandler({UserNotFoundException.class, EducationNotFoundException.class})
     public ResponseEntity<ErrorMessage> userInfoNotFoundExceptionHandler(Exception ex) {
         String message = ex.getMessage();
         ErrorMessage errorMessage = ErrorMessage.builder()

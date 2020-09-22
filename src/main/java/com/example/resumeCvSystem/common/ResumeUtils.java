@@ -5,7 +5,7 @@ import com.example.resumeCvSystem.entity.UserEntity;
 import com.example.resumeCvSystem.domain.Education;
 import com.example.resumeCvSystem.domain.User;
 
-public class resumeUtils {
+public class ResumeUtils {
     public static UserEntity userEntityBuilder(User user) {
         return UserEntity.builder()
                 .name(user.getName()).age(user.getAge())

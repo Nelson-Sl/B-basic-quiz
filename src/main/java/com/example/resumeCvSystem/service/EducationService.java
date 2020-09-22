@@ -1,11 +1,11 @@
 package com.example.resumeCvSystem.service;
 
 import com.example.resumeCvSystem.common.ExceptionMessage;
-import com.example.resumeCvSystem.common.resumeUtils;
+import com.example.resumeCvSystem.common.ResumeUtils;
 import com.example.resumeCvSystem.entity.EducationEntity;
 import com.example.resumeCvSystem.entity.UserEntity;
-import com.example.resumeCvSystem.exception.userNotFoundException;
-import com.example.resumeCvSystem.exception.educationNotFoundException;
+import com.example.resumeCvSystem.exception.UserNotFoundException;
+import com.example.resumeCvSystem.exception.EducationNotFoundException;
 import com.example.resumeCvSystem.repository.EducationRepository;
 import com.example.resumeCvSystem.repository.UserRepository;
 import com.example.resumeCvSystem.domain.Education;
@@ -24,21 +24,18 @@ public class EducationService {
     }
 
     public EducationEntity addEducationRecordByUserId(Long userId, Education education) {
-        if(isUserExisted(userId)) {
-            UserEntity educationUser = this.userRepository.findById(userId).get();
-            EducationEntity educationInDb = resumeUtils.educationEntityBuilder(education, educationUser);
+            UserEntity educationUser = this.userRepository.findById(userId)
+                    .orElseThrow(() -> new UserNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE));
+            EducationEntity educationInDb = ResumeUtils.educationEntityBuilder(education, educationUser);
             return this.educationRepository.save(educationInDb);
-        }
-        throw new userNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE);
-
     }
 
     public List<EducationEntity> findEducationRecordByUserId(Long userId) {
         if(isUserExisted(userId)) {
             return this.educationRepository.findAllByUser(userId)
-                    .orElseThrow(() -> new educationNotFoundException(ExceptionMessage.EDUCATION_NOT_FOUND_EXCEPTION_MESSAGE));
+                    .orElseThrow(() -> new EducationNotFoundException(ExceptionMessage.EDUCATION_NOT_FOUND_EXCEPTION_MESSAGE));
         }
-        throw new userNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE);
+        throw new UserNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE);
     }
 
     private boolean isUserExisted(Long userId) {
