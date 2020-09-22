@@ -1,44 +1,35 @@
 package com.example.resumeCvSystem.service;
 
 import com.example.resumeCvSystem.common.ExceptionMessage;
-import com.example.resumeCvSystem.common.ResumeUtils;
-import com.example.resumeCvSystem.entity.EducationEntity;
-import com.example.resumeCvSystem.entity.UserEntity;
+import com.example.resumeCvSystem.collections.UserCollection;
 import com.example.resumeCvSystem.exception.UserNotFoundException;
 import com.example.resumeCvSystem.exception.EducationNotFoundException;
-import com.example.resumeCvSystem.repository.EducationRepository;
 import com.example.resumeCvSystem.repository.UserRepository;
 import com.example.resumeCvSystem.domain.Education;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class EducationService {
-    private final EducationRepository educationRepository;
     private final UserRepository userRepository;
 
-    public EducationService(EducationRepository educationRepository, UserRepository userRepository) {
-        this.educationRepository = educationRepository;
+    public EducationService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public EducationEntity addEducationRecordByUserId(Long userId, Education education) {
-            UserEntity educationUser = this.userRepository.findById(userId)
+    public UserCollection addEducationRecordByUserId(String userId, Education education) {
+            UserCollection educationUser = this.userRepository.findById(userId)
                     .orElseThrow(() -> new UserNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE));
-            EducationEntity educationInDb = ResumeUtils.educationEntityBuilder(education, educationUser);
-            return this.educationRepository.save(educationInDb);
+            educationUser.getEducations().add(education);
+            this.userRepository.save(educationUser);
+            return educationUser;
     }
 
-    public List<EducationEntity> findEducationRecordByUserId(Long userId) {
-        if(isUserExisted(userId)) {
-            return this.educationRepository.findAllByUser(userId)
-                    .orElseThrow(() -> new EducationNotFoundException(ExceptionMessage.EDUCATION_NOT_FOUND_EXCEPTION_MESSAGE));
+    public UserCollection findEducationRecordByUserId(String userId) {
+        UserCollection foundUser =  this.userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE));
+        if(foundUser.getEducations().isEmpty()) {
+            throw new EducationNotFoundException(ExceptionMessage.EDUCATION_NOT_FOUND_EXCEPTION_MESSAGE);
         }
-        throw new UserNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE);
-    }
-
-    private boolean isUserExisted(Long userId) {
-        return this.userRepository.existsById(userId);
+        return foundUser;
     }
 }

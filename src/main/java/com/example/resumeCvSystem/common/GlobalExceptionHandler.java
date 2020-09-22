@@ -48,14 +48,14 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
     }
 
-    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity<ErrorMessage> userIdExceptionHandler (MethodArgumentTypeMismatchException ex) {
-        String message = ExceptionMessage.USER_INVALID_ID_EXCEPTION_MESSAGE;
-        ErrorMessage errorMessage = ErrorMessage.builder()
-                .timeStamp(GlobalVariables.dateFormat.format(new Date()))
-                .status(HttpStatus.BAD_REQUEST.value())
-                .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
-                .message(message).build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
-    }
+//    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+//    public ResponseEntity<ErrorMessage> userIdExceptionHandler (MethodArgumentTypeMismatchException ex) {
+//        String message = ExceptionMessage.USER_INVALID_ID_EXCEPTION_MESSAGE;
+//        ErrorMessage errorMessage = ErrorMessage.builder()
+//                .timeStamp(GlobalVariables.dateFormat.format(new Date()))
+//                .status(HttpStatus.BAD_REQUEST.value())
+//                .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
+//                .message(message).build();
+//        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+//    }
 }
