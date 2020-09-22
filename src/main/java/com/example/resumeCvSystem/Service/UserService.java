@@ -25,9 +25,6 @@ public class UserService {
 
     public UserEntity findUserById(Long id) {
         Optional<UserEntity> userFound = this.userRepository.findById(id);
-        if(userFound.isPresent()) {
-            return userFound.get();
-        }
-        throw new userNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE);
-    }
+        return userFound.orElseThrow(() -> new userNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE));
+    } //Exception首字母大写，包名小写
 }

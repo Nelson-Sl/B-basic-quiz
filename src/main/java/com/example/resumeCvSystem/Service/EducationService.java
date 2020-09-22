@@ -12,7 +12,6 @@ import com.example.resumeCvSystem.domain.Education;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EducationService {
@@ -36,11 +35,8 @@ public class EducationService {
 
     public List<EducationEntity> findEducationRecordByUserId(Long userId) {
         if(isUserExisted(userId)) {
-            Optional<List<EducationEntity>> educationByUserIdFound = this.educationRepository.findAllByUser(userId);
-            if(educationByUserIdFound.isPresent()) {
-                return educationByUserIdFound.get();
-            }
-            throw new educationNotFoundException(ExceptionMessage.EDUCATION_NOT_FOUND_EXCEPTION_MESSAGE);
+            return this.educationRepository.findAllByUser(userId)
+                    .orElseThrow(() -> new educationNotFoundException(ExceptionMessage.EDUCATION_NOT_FOUND_EXCEPTION_MESSAGE));
         }
         throw new userNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE);
     }
