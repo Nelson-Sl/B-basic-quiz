@@ -7,6 +7,7 @@ import com.example.resumeCvSystem.domain.Education;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -22,7 +23,7 @@ public class EducationController {
     @PostMapping("/{id}/educations")
     @ResponseStatus(HttpStatus.CREATED)
     public EducationEntity addEducationRecordByUserId(@PathVariable Long id,
-                                                @RequestBody Education education) {
+                                                @RequestBody @Valid Education education) {
         return this.educationService.addEducationRecordByUserId(id,education);
     }
 

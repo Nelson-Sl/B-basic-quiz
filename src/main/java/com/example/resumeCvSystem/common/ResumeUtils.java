@@ -14,7 +14,10 @@ public class ResumeUtils {
 
     public static EducationEntity educationEntityBuilder(Education education, UserEntity user) {
         return EducationEntity.builder()
-                .title(education.getTitle()).year(education.getYear())
-                .description(education.getDescription()).user(user).build();
+                .title(education.getTitle())
+                .year(education.getYear())
+                .description(education.getDescription())
+                .user(user)
+                .build();
     }
 }
