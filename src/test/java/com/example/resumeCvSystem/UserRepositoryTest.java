@@ -49,7 +49,6 @@ public class UserRepositoryTest {
     @Test
     void should_return_empty_when_id_not_exist() {
         Optional<UserEntity> foundUser = userRepository.findById(5L);
-
         assertThat(foundUser.isPresent()).isEqualTo(false);
     }
 
