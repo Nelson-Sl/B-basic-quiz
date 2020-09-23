@@ -50,7 +50,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<ErrorMessage> userIdExceptionHandler (MethodArgumentTypeMismatchException ex) {
-        String message = ExceptionMessage.USER_INVALID_ID_EXCEPTION_MESSAGE;
+        String message = GlobalVariables.USER_INVALID_ID_EXCEPTION_MESSAGE;
         ErrorMessage errorMessage = ErrorMessage.builder()
                 .timeStamp(GlobalVariables.dateFormat.format(new Date()))
                 .status(HttpStatus.BAD_REQUEST.value())

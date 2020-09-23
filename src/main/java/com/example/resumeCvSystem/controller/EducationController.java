@@ -28,7 +28,6 @@ public class EducationController {
 
     @GetMapping("/{id}/educations")
     public List<EducationEntity> findEducationRecordByUserId(@PathVariable long id) {
-        // GTB: - 没有处理 user 为 null 的场景？
         return this.educationService.findEducationRecordByUserId(id);
     }
 }

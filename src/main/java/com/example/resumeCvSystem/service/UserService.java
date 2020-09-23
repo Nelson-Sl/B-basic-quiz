@@ -1,6 +1,6 @@
 package com.example.resumeCvSystem.service;
 
-import com.example.resumeCvSystem.common.ExceptionMessage;
+import com.example.resumeCvSystem.common.GlobalVariables;
 import com.example.resumeCvSystem.common.ResumeUtils;
 import com.example.resumeCvSystem.entity.UserEntity;
 import com.example.resumeCvSystem.repository.UserRepository;
@@ -25,6 +25,6 @@ public class UserService {
 
     public UserEntity findUserById(Long id) {
         Optional<UserEntity> userFound = this.userRepository.findById(id);
-        return userFound.orElseThrow(() -> new UserNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE));
-    } //Exception首字母大写，包名小写
+        return userFound.orElseThrow(() -> new UserNotFoundException(GlobalVariables.USER_NOT_FOUND_EXCEPTION_MESSAGE));
+    }
 }

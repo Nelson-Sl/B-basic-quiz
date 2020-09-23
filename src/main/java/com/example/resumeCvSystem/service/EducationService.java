@@ -1,6 +1,6 @@
 package com.example.resumeCvSystem.service;
 
-import com.example.resumeCvSystem.common.ExceptionMessage;
+import com.example.resumeCvSystem.common.GlobalVariables;
 import com.example.resumeCvSystem.common.ResumeUtils;
 import com.example.resumeCvSystem.entity.EducationEntity;
 import com.example.resumeCvSystem.entity.UserEntity;
@@ -25,7 +25,7 @@ public class EducationService {
 
     public EducationEntity addEducationRecordByUserId(Long userId, Education education) {
             UserEntity educationUser = this.userRepository.findById(userId)
-                    .orElseThrow(() -> new UserNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE));
+                    .orElseThrow(() -> new UserNotFoundException(GlobalVariables.USER_NOT_FOUND_EXCEPTION_MESSAGE));
             EducationEntity educationInDb = ResumeUtils.educationEntityBuilder(education, educationUser);
             return this.educationRepository.save(educationInDb);
     }
@@ -33,9 +33,9 @@ public class EducationService {
     public List<EducationEntity> findEducationRecordByUserId(Long userId) {
         if(isUserExisted(userId)) {
             return this.educationRepository.findAllByUser(userId)
-                    .orElseThrow(() -> new EducationNotFoundException(ExceptionMessage.EDUCATION_NOT_FOUND_EXCEPTION_MESSAGE));
+                    .orElseThrow(() -> new EducationNotFoundException(GlobalVariables.EDUCATION_NOT_FOUND_EXCEPTION_MESSAGE));
         }
-        throw new UserNotFoundException(ExceptionMessage.USER_NOT_FOUND_EXCEPTION_MESSAGE);
+        throw new UserNotFoundException(GlobalVariables.USER_NOT_FOUND_EXCEPTION_MESSAGE);
     }
 
     private boolean isUserExisted(Long userId) {
