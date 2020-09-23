@@ -20,7 +20,8 @@ public class UserService {
     }
 
     public UserEntity addUser(User user) {
-        return this.userRepository.save(user);
+        UserEntity userInDb = ResumeUtils.userEntityBuilder(user);
+        return this.userRepository.save(userInDb);
     }
 
     public UserEntity findUserById(Long id) {

@@ -47,7 +47,7 @@ public class UserServiceTest {
         @Test
         void should_add_user_successfully() {
             UserEntity expectedUser = ResumeUtils.userEntityBuilder(user);
-            when(userRepository.save(any(User.class))).thenReturn(expectedUser);
+            when(userRepository.save(any(UserEntity.class))).thenReturn(expectedUser);
 
             UserEntity savedUser = userService.addUser(user);
             Assertions.assertEquals(expectedUser, savedUser);
