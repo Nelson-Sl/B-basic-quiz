@@ -5,6 +5,7 @@ import com.example.resumeCvSystem.common.ResumeUtils;
 import com.example.resumeCvSystem.entity.UserEntity;
 import com.example.resumeCvSystem.repository.UserRepository;
 import com.example.resumeCvSystem.domain.User;
+import org.springframework.boot.context.properties.NestedConfigurationProperty;
 import org.springframework.stereotype.Service;
 import com.example.resumeCvSystem.exception.UserNotFoundException;
 
@@ -19,8 +20,7 @@ public class UserService {
     }
 
     public UserEntity addUser(User user) {
-        UserEntity userInDb = ResumeUtils.userEntityBuilder(user);
-        return this.userRepository.save(userInDb);
+        return this.userRepository.save(user);
     }
 
     public UserEntity findUserById(Long id) {
